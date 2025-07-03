@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package creator;
+
+option go_package = "ceme4k1n.creator.v1";
+
+service CreatorService {
+  rpc CreateThing(CreateThingRequest) returns (CreateThingResponse);
+  rpc GetThing(GetThingRequest) returns (GetThingResponse);
+}
+
+message CreateThingRequest {
+  string name = 1;
+}
+
+message CreateThingResponse {
+  string id = 1;
+  string status = 2;
+}
+
+message GetThingRequest {
+  string id = 1;
+}
+
+message GetThingResponse {
+  string name = 1;
+  string status = 2;
+}
