@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package creator;
 
-option go_package = "ceme4k1n.creator.v1;creator";
+option go_package = "github.com/Durov-Fans/protos/gen/go/creator;creator";
 
 service CreatorService {
   rpc CreateThing(CreateThingRequest) returns (CreateThingResponse);

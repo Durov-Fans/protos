@@ -230,7 +230,7 @@ const file_creator_creator_proto_rawDesc = "" +
 	"\x06status\x18\x02 \x01(\tR\x06status2\x9b\x01\n" +
 	"\x0eCreatorService\x12H\n" +
 	"\vCreateThing\x12\x1b.creator.CreateThingRequest\x1a\x1c.creator.CreateThingResponse\x12?\n" +
-	"\bGetThing\x12\x18.creator.GetThingRequest\x1a\x19.creator.GetThingResponseB\x1dZ\x1bceme4k1n.creator.v1;creatorb\x06proto3"
+	"\bGetThing\x12\x18.creator.GetThingRequest\x1a\x19.creator.GetThingResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
 
 var (
 	file_creator_creator_proto_rawDescOnce sync.Once
