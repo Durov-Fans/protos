@@ -19,16 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CreatorService_CreateThing_FullMethodName = "/creator.CreatorService/CreateThing"
-	CreatorService_GetThing_FullMethodName    = "/creator.CreatorService/GetThing"
+	CreatorService_CreateUser_FullMethodName = "/creator.CreatorService/CreateUser"
 )
 
 // CreatorServiceClient is the client API for CreatorService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CreatorServiceClient interface {
-	CreateThing(ctx context.Context, in *CreateThingRequest, opts ...grpc.CallOption) (*CreateThingResponse, error)
-	GetThing(ctx context.Context, in *GetThingRequest, opts ...grpc.CallOption) (*GetThingResponse, error)
+	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 }
 
 type creatorServiceClient struct {
@@ -39,20 +37,10 @@ func NewCreatorServiceClient(cc grpc.ClientConnInterface) CreatorServiceClient {
 	return &creatorServiceClient{cc}
 }
 
-func (c *creatorServiceClient) CreateThing(ctx context.Context, in *CreateThingRequest, opts ...grpc.CallOption) (*CreateThingResponse, error) {
+func (c *creatorServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateThingResponse)
-	err := c.cc.Invoke(ctx, CreatorService_CreateThing_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *creatorServiceClient) GetThing(ctx context.Context, in *GetThingRequest, opts ...grpc.CallOption) (*GetThingResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetThingResponse)
-	err := c.cc.Invoke(ctx, CreatorService_GetThing_FullMethodName, in, out, cOpts...)
+	out := new(CreateUserResponse)
+	err := c.cc.Invoke(ctx, CreatorService_CreateUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,8 +51,7 @@ func (c *creatorServiceClient) GetThing(ctx context.Context, in *GetThingRequest
 // All implementations must embed UnimplementedCreatorServiceServer
 // for forward compatibility.
 type CreatorServiceServer interface {
-	CreateThing(context.Context, *CreateThingRequest) (*CreateThingResponse, error)
-	GetThing(context.Context, *GetThingRequest) (*GetThingResponse, error)
+	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 	mustEmbedUnimplementedCreatorServiceServer()
 }
 
@@ -75,11 +62,8 @@ type CreatorServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCreatorServiceServer struct{}
 
-func (UnimplementedCreatorServiceServer) CreateThing(context.Context, *CreateThingRequest) (*CreateThingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateThing not implemented")
-}
-func (UnimplementedCreatorServiceServer) GetThing(context.Context, *GetThingRequest) (*GetThingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetThing not implemented")
+func (UnimplementedCreatorServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
 func (UnimplementedCreatorServiceServer) mustEmbedUnimplementedCreatorServiceServer() {}
 func (UnimplementedCreatorServiceServer) testEmbeddedByValue()                        {}
@@ -102,38 +86,20 @@ func RegisterCreatorServiceServer(s grpc.ServiceRegistrar, srv CreatorServiceSer
 	s.RegisterService(&CreatorService_ServiceDesc, srv)
 }
 
-func _CreatorService_CreateThing_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateThingRequest)
+func _CreatorService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CreatorServiceServer).CreateThing(ctx, in)
+		return srv.(CreatorServiceServer).CreateUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CreatorService_CreateThing_FullMethodName,
+		FullMethod: CreatorService_CreateUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CreatorServiceServer).CreateThing(ctx, req.(*CreateThingRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CreatorService_GetThing_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetThingRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CreatorServiceServer).GetThing(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CreatorService_GetThing_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CreatorServiceServer).GetThing(ctx, req.(*GetThingRequest))
+		return srv.(CreatorServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -146,12 +112,8 @@ var CreatorService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CreatorServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateThing",
-			Handler:    _CreatorService_CreateThing_Handler,
-		},
-		{
-			MethodName: "GetThing",
-			Handler:    _CreatorService_GetThing_Handler,
+			MethodName: "CreateUser",
+			Handler:    _CreatorService_CreateUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

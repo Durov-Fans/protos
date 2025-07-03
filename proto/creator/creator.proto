@@ -5,25 +5,15 @@ package creator;
 option go_package = "github.com/Durov-Fans/protos/gen/go/creator;creator";
 
 service CreatorService {
-  rpc CreateThing(CreateThingRequest) returns (CreateThingResponse);
-  rpc GetThing(GetThingRequest) returns (GetThingResponse);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
 }
 
-message CreateThingRequest {
-  string name = 1;
+message CreateUserRequest{
+  int64 user_id = 1;
+  bool tg_user =2;
+  int64 telegram_id = 3;
 }
 
-message CreateThingResponse {
-  string id = 1;
-  string status = 2;
+message CreateUserResponse{
+  string status = 1;
 }
-
-message GetThingRequest {
-  string id = 1;
-}
-
-message GetThingResponse {
-  string name = 1;
-  string status = 2;
-}
-//

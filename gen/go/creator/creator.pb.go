@@ -21,27 +21,29 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type CreateThingRequest struct {
+type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	TgUser        bool                   `protobuf:"varint,2,opt,name=tg_user,json=tgUser,proto3" json:"tg_user,omitempty"`
+	TelegramId    int64                  `protobuf:"varint,3,opt,name=telegram_id,json=telegramId,proto3" json:"telegram_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateThingRequest) Reset() {
-	*x = CreateThingRequest{}
+func (x *CreateUserRequest) Reset() {
+	*x = CreateUserRequest{}
 	mi := &file_creator_creator_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateThingRequest) String() string {
+func (x *CreateUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateThingRequest) ProtoMessage() {}
+func (*CreateUserRequest) ProtoMessage() {}
 
-func (x *CreateThingRequest) ProtoReflect() protoreflect.Message {
+func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_creator_creator_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -53,40 +55,53 @@ func (x *CreateThingRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateThingRequest.ProtoReflect.Descriptor instead.
-func (*CreateThingRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
+func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_creator_creator_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateThingRequest) GetName() string {
+func (x *CreateUserRequest) GetUserId() int64 {
 	if x != nil {
-		return x.Name
+		return x.UserId
 	}
-	return ""
+	return 0
 }
 
-type CreateThingResponse struct {
+func (x *CreateUserRequest) GetTgUser() bool {
+	if x != nil {
+		return x.TgUser
+	}
+	return false
+}
+
+func (x *CreateUserRequest) GetTelegramId() int64 {
+	if x != nil {
+		return x.TelegramId
+	}
+	return 0
+}
+
+type CreateUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateThingResponse) Reset() {
-	*x = CreateThingResponse{}
+func (x *CreateUserResponse) Reset() {
+	*x = CreateUserResponse{}
 	mi := &file_creator_creator_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateThingResponse) String() string {
+func (x *CreateUserResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateThingResponse) ProtoMessage() {}
+func (*CreateUserResponse) ProtoMessage() {}
 
-func (x *CreateThingResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_creator_creator_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -98,115 +113,12 @@ func (x *CreateThingResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateThingResponse.ProtoReflect.Descriptor instead.
-func (*CreateThingResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
+func (*CreateUserResponse) Descriptor() ([]byte, []int) {
 	return file_creator_creator_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateThingResponse) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *CreateThingResponse) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-type GetThingRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetThingRequest) Reset() {
-	*x = GetThingRequest{}
-	mi := &file_creator_creator_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetThingRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetThingRequest) ProtoMessage() {}
-
-func (x *GetThingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_creator_creator_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetThingRequest.ProtoReflect.Descriptor instead.
-func (*GetThingRequest) Descriptor() ([]byte, []int) {
-	return file_creator_creator_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *GetThingRequest) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-type GetThingResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetThingResponse) Reset() {
-	*x = GetThingResponse{}
-	mi := &file_creator_creator_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetThingResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetThingResponse) ProtoMessage() {}
-
-func (x *GetThingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_creator_creator_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetThingResponse.ProtoReflect.Descriptor instead.
-func (*GetThingResponse) Descriptor() ([]byte, []int) {
-	return file_creator_creator_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *GetThingResponse) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *GetThingResponse) GetStatus() string {
+func (x *CreateUserResponse) GetStatus() string {
 	if x != nil {
 		return x.Status
 	}
@@ -217,20 +129,17 @@ var File_creator_creator_proto protoreflect.FileDescriptor
 
 const file_creator_creator_proto_rawDesc = "" +
 	"\n" +
-	"\x15creator/creator.proto\x12\acreator\"(\n" +
-	"\x12CreateThingRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"=\n" +
-	"\x13CreateThingResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\tR\x06status\"!\n" +
-	"\x0fGetThingRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\">\n" +
-	"\x10GetThingResponse\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\tR\x06status2\x9b\x01\n" +
-	"\x0eCreatorService\x12H\n" +
-	"\vCreateThing\x12\x1b.creator.CreateThingRequest\x1a\x1c.creator.CreateThingResponse\x12?\n" +
-	"\bGetThing\x12\x18.creator.GetThingRequest\x1a\x19.creator.GetThingResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
+	"\x15creator/creator.proto\x12\acreator\"f\n" +
+	"\x11CreateUserRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
+	"\atg_user\x18\x02 \x01(\bR\x06tgUser\x12\x1f\n" +
+	"\vtelegram_id\x18\x03 \x01(\x03R\n" +
+	"telegramId\",\n" +
+	"\x12CreateUserResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status2W\n" +
+	"\x0eCreatorService\x12E\n" +
+	"\n" +
+	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
 
 var (
 	file_creator_creator_proto_rawDescOnce sync.Once
@@ -244,20 +153,16 @@ func file_creator_creator_proto_rawDescGZIP() []byte {
 	return file_creator_creator_proto_rawDescData
 }
 
-var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_creator_creator_proto_goTypes = []any{
-	(*CreateThingRequest)(nil),  // 0: creator.CreateThingRequest
-	(*CreateThingResponse)(nil), // 1: creator.CreateThingResponse
-	(*GetThingRequest)(nil),     // 2: creator.GetThingRequest
-	(*GetThingResponse)(nil),    // 3: creator.GetThingResponse
+	(*CreateUserRequest)(nil),  // 0: creator.CreateUserRequest
+	(*CreateUserResponse)(nil), // 1: creator.CreateUserResponse
 }
 var file_creator_creator_proto_depIdxs = []int32{
-	0, // 0: creator.CreatorService.CreateThing:input_type -> creator.CreateThingRequest
-	2, // 1: creator.CreatorService.GetThing:input_type -> creator.GetThingRequest
-	1, // 2: creator.CreatorService.CreateThing:output_type -> creator.CreateThingResponse
-	3, // 3: creator.CreatorService.GetThing:output_type -> creator.GetThingResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	0, // 0: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
+	1, // 1: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -274,7 +179,7 @@ func file_creator_creator_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_creator_creator_proto_rawDesc), len(file_creator_creator_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
