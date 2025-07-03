@@ -43,7 +43,7 @@ message EditDescResponse{
 
 message EditBannerRequest{
   int64 UserId = 1;
-  string BannerUrl =2;
+  string BannerData =2;
 }
 
 message EditBannerResponse{
@@ -53,7 +53,7 @@ message EditBannerResponse{
 
 message EditAvatarRequest{
   int64 UserId = 1;
-  string AvatarUrl =2;
+  string AvatarData =2;
 }
 
 message EditAvatarResponse{
