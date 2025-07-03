@@ -125,6 +125,390 @@ func (x *CreateUserResponse) GetStatus() string {
 	return ""
 }
 
+type EditNameRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=UserId,proto3" json:"UserId,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EditNameRequest) Reset() {
+	*x = EditNameRequest{}
+	mi := &file_creator_creator_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EditNameRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EditNameRequest) ProtoMessage() {}
+
+func (x *EditNameRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EditNameRequest.ProtoReflect.Descriptor instead.
+func (*EditNameRequest) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *EditNameRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *EditNameRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type EditNameResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EditNameResponse) Reset() {
+	*x = EditNameResponse{}
+	mi := &file_creator_creator_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EditNameResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EditNameResponse) ProtoMessage() {}
+
+func (x *EditNameResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EditNameResponse.ProtoReflect.Descriptor instead.
+func (*EditNameResponse) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *EditNameResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type EditDescRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=UserId,proto3" json:"UserId,omitempty"`
+	Desc          string                 `protobuf:"bytes,2,opt,name=Desc,proto3" json:"Desc,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EditDescRequest) Reset() {
+	*x = EditDescRequest{}
+	mi := &file_creator_creator_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EditDescRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EditDescRequest) ProtoMessage() {}
+
+func (x *EditDescRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EditDescRequest.ProtoReflect.Descriptor instead.
+func (*EditDescRequest) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *EditDescRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *EditDescRequest) GetDesc() string {
+	if x != nil {
+		return x.Desc
+	}
+	return ""
+}
+
+type EditDescResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EditDescResponse) Reset() {
+	*x = EditDescResponse{}
+	mi := &file_creator_creator_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EditDescResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EditDescResponse) ProtoMessage() {}
+
+func (x *EditDescResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EditDescResponse.ProtoReflect.Descriptor instead.
+func (*EditDescResponse) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *EditDescResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type EditBannerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=UserId,proto3" json:"UserId,omitempty"`
+	BannerUrl     string                 `protobuf:"bytes,2,opt,name=BannerUrl,proto3" json:"BannerUrl,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EditBannerRequest) Reset() {
+	*x = EditBannerRequest{}
+	mi := &file_creator_creator_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EditBannerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EditBannerRequest) ProtoMessage() {}
+
+func (x *EditBannerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EditBannerRequest.ProtoReflect.Descriptor instead.
+func (*EditBannerRequest) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *EditBannerRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *EditBannerRequest) GetBannerUrl() string {
+	if x != nil {
+		return x.BannerUrl
+	}
+	return ""
+}
+
+type EditBannerResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EditBannerResponse) Reset() {
+	*x = EditBannerResponse{}
+	mi := &file_creator_creator_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EditBannerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EditBannerResponse) ProtoMessage() {}
+
+func (x *EditBannerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EditBannerResponse.ProtoReflect.Descriptor instead.
+func (*EditBannerResponse) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *EditBannerResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type EditAvatarRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=UserId,proto3" json:"UserId,omitempty"`
+	AvatarUrl     string                 `protobuf:"bytes,2,opt,name=AvatarUrl,proto3" json:"AvatarUrl,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EditAvatarRequest) Reset() {
+	*x = EditAvatarRequest{}
+	mi := &file_creator_creator_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EditAvatarRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EditAvatarRequest) ProtoMessage() {}
+
+func (x *EditAvatarRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EditAvatarRequest.ProtoReflect.Descriptor instead.
+func (*EditAvatarRequest) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *EditAvatarRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *EditAvatarRequest) GetAvatarUrl() string {
+	if x != nil {
+		return x.AvatarUrl
+	}
+	return ""
+}
+
+type EditAvatarResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EditAvatarResponse) Reset() {
+	*x = EditAvatarResponse{}
+	mi := &file_creator_creator_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EditAvatarResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EditAvatarResponse) ProtoMessage() {}
+
+func (x *EditAvatarResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EditAvatarResponse.ProtoReflect.Descriptor instead.
+func (*EditAvatarResponse) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *EditAvatarResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
 var File_creator_creator_proto protoreflect.FileDescriptor
 
 const file_creator_creator_proto_rawDesc = "" +
@@ -136,10 +520,36 @@ const file_creator_creator_proto_rawDesc = "" +
 	"\vtelegram_id\x18\x03 \x01(\x03R\n" +
 	"telegramId\",\n" +
 	"\x12CreateUserResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status2W\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"=\n" +
+	"\x0fEditNameRequest\x12\x16\n" +
+	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x12\n" +
+	"\x04Name\x18\x02 \x01(\tR\x04Name\"*\n" +
+	"\x10EditNameResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"=\n" +
+	"\x0fEditDescRequest\x12\x16\n" +
+	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x12\n" +
+	"\x04Desc\x18\x02 \x01(\tR\x04Desc\"*\n" +
+	"\x10EditDescResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"I\n" +
+	"\x11EditBannerRequest\x12\x16\n" +
+	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x1c\n" +
+	"\tBannerUrl\x18\x02 \x01(\tR\tBannerUrl\",\n" +
+	"\x12EditBannerResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"I\n" +
+	"\x11EditAvatarRequest\x12\x16\n" +
+	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x1c\n" +
+	"\tAvatarUrl\x18\x02 \x01(\tR\tAvatarUrl\",\n" +
+	"\x12EditAvatarResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status2\xe7\x02\n" +
 	"\x0eCreatorService\x12E\n" +
 	"\n" +
-	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
+	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponse\x12?\n" +
+	"\bEditName\x12\x18.creator.EditNameRequest\x1a\x19.creator.EditNameResponse\x12?\n" +
+	"\bEditDesc\x12\x18.creator.EditDescRequest\x1a\x19.creator.EditDescResponse\x12E\n" +
+	"\n" +
+	"EditBanner\x12\x1a.creator.EditBannerRequest\x1a\x1b.creator.EditBannerResponse\x12E\n" +
+	"\n" +
+	"EditAvatar\x12\x1a.creator.EditAvatarRequest\x1a\x1b.creator.EditAvatarResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
 
 var (
 	file_creator_creator_proto_rawDescOnce sync.Once
@@ -153,16 +563,32 @@ func file_creator_creator_proto_rawDescGZIP() []byte {
 	return file_creator_creator_proto_rawDescData
 }
 
-var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_creator_creator_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),  // 0: creator.CreateUserRequest
 	(*CreateUserResponse)(nil), // 1: creator.CreateUserResponse
+	(*EditNameRequest)(nil),    // 2: creator.EditNameRequest
+	(*EditNameResponse)(nil),   // 3: creator.EditNameResponse
+	(*EditDescRequest)(nil),    // 4: creator.EditDescRequest
+	(*EditDescResponse)(nil),   // 5: creator.EditDescResponse
+	(*EditBannerRequest)(nil),  // 6: creator.EditBannerRequest
+	(*EditBannerResponse)(nil), // 7: creator.EditBannerResponse
+	(*EditAvatarRequest)(nil),  // 8: creator.EditAvatarRequest
+	(*EditAvatarResponse)(nil), // 9: creator.EditAvatarResponse
 }
 var file_creator_creator_proto_depIdxs = []int32{
 	0, // 0: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
-	1, // 1: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 1: creator.CreatorService.EditName:input_type -> creator.EditNameRequest
+	4, // 2: creator.CreatorService.EditDesc:input_type -> creator.EditDescRequest
+	6, // 3: creator.CreatorService.EditBanner:input_type -> creator.EditBannerRequest
+	8, // 4: creator.CreatorService.EditAvatar:input_type -> creator.EditAvatarRequest
+	1, // 5: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
+	3, // 6: creator.CreatorService.EditName:output_type -> creator.EditNameResponse
+	5, // 7: creator.CreatorService.EditDesc:output_type -> creator.EditDescResponse
+	7, // 8: creator.CreatorService.EditBanner:output_type -> creator.EditBannerResponse
+	9, // 9: creator.CreatorService.EditAvatar:output_type -> creator.EditAvatarResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -179,7 +605,7 @@ func file_creator_creator_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_creator_creator_proto_rawDesc), len(file_creator_creator_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
