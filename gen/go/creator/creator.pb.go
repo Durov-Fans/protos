@@ -320,7 +320,7 @@ func (x *EditDescResponse) GetStatus() string {
 type EditBannerRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=UserId,proto3" json:"UserId,omitempty"`
-	BannerData    string                 `protobuf:"bytes,2,opt,name=BannerData,proto3" json:"BannerData,omitempty"`
+	BannerData    []byte                 `protobuf:"bytes,2,opt,name=BannerData,proto3" json:"BannerData,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -362,11 +362,11 @@ func (x *EditBannerRequest) GetUserId() int64 {
 	return 0
 }
 
-func (x *EditBannerRequest) GetBannerData() string {
+func (x *EditBannerRequest) GetBannerData() []byte {
 	if x != nil {
 		return x.BannerData
 	}
-	return ""
+	return nil
 }
 
 type EditBannerResponse struct {
@@ -424,7 +424,7 @@ func (x *EditBannerResponse) GetBannerUrl() string {
 type EditAvatarRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=UserId,proto3" json:"UserId,omitempty"`
-	AvatarData    string                 `protobuf:"bytes,2,opt,name=AvatarData,proto3" json:"AvatarData,omitempty"`
+	AvatarData    []byte                 `protobuf:"bytes,2,opt,name=AvatarData,proto3" json:"AvatarData,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -466,11 +466,11 @@ func (x *EditAvatarRequest) GetUserId() int64 {
 	return 0
 }
 
-func (x *EditAvatarRequest) GetAvatarData() string {
+func (x *EditAvatarRequest) GetAvatarData() []byte {
 	if x != nil {
 		return x.AvatarData
 	}
-	return ""
+	return nil
 }
 
 type EditAvatarResponse struct {
@@ -550,7 +550,7 @@ const file_creator_creator_proto_rawDesc = "" +
 	"\x11EditBannerRequest\x12\x16\n" +
 	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x1e\n" +
 	"\n" +
-	"BannerData\x18\x02 \x01(\tR\n" +
+	"BannerData\x18\x02 \x01(\fR\n" +
 	"BannerData\"J\n" +
 	"\x12EditBannerResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x1c\n" +
@@ -558,7 +558,7 @@ const file_creator_creator_proto_rawDesc = "" +
 	"\x11EditAvatarRequest\x12\x16\n" +
 	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x1e\n" +
 	"\n" +
-	"AvatarData\x18\x02 \x01(\tR\n" +
+	"AvatarData\x18\x02 \x01(\fR\n" +
 	"AvatarData\"J\n" +
 	"\x12EditAvatarResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12\x1c\n" +
