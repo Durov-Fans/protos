@@ -1,4 +1,5 @@
-module protos
+module github.com/Durov-Fans/protos
+
 
 go 1.24
 
