@@ -372,6 +372,7 @@ func (x *EditBannerRequest) GetBannerUrl() string {
 type EditBannerResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	BannerUrl     string                 `protobuf:"bytes,2,opt,name=BannerUrl,proto3" json:"BannerUrl,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -409,6 +410,13 @@ func (*EditBannerResponse) Descriptor() ([]byte, []int) {
 func (x *EditBannerResponse) GetStatus() string {
 	if x != nil {
 		return x.Status
+	}
+	return ""
+}
+
+func (x *EditBannerResponse) GetBannerUrl() string {
+	if x != nil {
+		return x.BannerUrl
 	}
 	return ""
 }
@@ -468,6 +476,7 @@ func (x *EditAvatarRequest) GetAvatarUrl() string {
 type EditAvatarResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	AvatarUrl     string                 `protobuf:"bytes,2,opt,name=AvatarUrl,proto3" json:"AvatarUrl,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -509,6 +518,13 @@ func (x *EditAvatarResponse) GetStatus() string {
 	return ""
 }
 
+func (x *EditAvatarResponse) GetAvatarUrl() string {
+	if x != nil {
+		return x.AvatarUrl
+	}
+	return ""
+}
+
 var File_creator_creator_proto protoreflect.FileDescriptor
 
 const file_creator_creator_proto_rawDesc = "" +
@@ -533,14 +549,16 @@ const file_creator_creator_proto_rawDesc = "" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"I\n" +
 	"\x11EditBannerRequest\x12\x16\n" +
 	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x1c\n" +
-	"\tBannerUrl\x18\x02 \x01(\tR\tBannerUrl\",\n" +
+	"\tBannerUrl\x18\x02 \x01(\tR\tBannerUrl\"J\n" +
 	"\x12EditBannerResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\"I\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\x12\x1c\n" +
+	"\tBannerUrl\x18\x02 \x01(\tR\tBannerUrl\"I\n" +
 	"\x11EditAvatarRequest\x12\x16\n" +
 	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x1c\n" +
-	"\tAvatarUrl\x18\x02 \x01(\tR\tAvatarUrl\",\n" +
+	"\tAvatarUrl\x18\x02 \x01(\tR\tAvatarUrl\"J\n" +
 	"\x12EditAvatarResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status2\xe7\x02\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\x12\x1c\n" +
+	"\tAvatarUrl\x18\x02 \x01(\tR\tAvatarUrl2\xe7\x02\n" +
 	"\x0eCreatorService\x12E\n" +
 	"\n" +
 	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponse\x12?\n" +
