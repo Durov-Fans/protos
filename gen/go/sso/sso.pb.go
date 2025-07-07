@@ -23,8 +23,8 @@ const (
 
 type RegisterRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	UserDataHash   string                 `protobuf:"bytes,1,opt,name=userDataHash,proto3" json:"userDataHash,omitempty"`
-	UserDataUnsafe string                 `protobuf:"bytes,2,opt,name=userDataUnsafe,proto3" json:"userDataUnsafe,omitempty"`
+	Hash           string                 `protobuf:"bytes,1,opt,name=hash,proto3" json:"hash,omitempty"`
+	UserData       string                 `protobuf:"bytes,2,opt,name=userData,proto3" json:"userData,omitempty"`
 	UserNameLocale string                 `protobuf:"bytes,3,opt,name=userNameLocale,proto3" json:"userNameLocale,omitempty"`
 	ServiceId      int64                  `protobuf:"varint,4,opt,name=service_id,json=serviceId,proto3" json:"service_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
@@ -61,16 +61,16 @@ func (*RegisterRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RegisterRequest) GetUserDataHash() string {
+func (x *RegisterRequest) GetHash() string {
 	if x != nil {
-		return x.UserDataHash
+		return x.Hash
 	}
 	return ""
 }
 
-func (x *RegisterRequest) GetUserDataUnsafe() string {
+func (x *RegisterRequest) GetUserData() string {
 	if x != nil {
-		return x.UserDataUnsafe
+		return x.UserData
 	}
 	return ""
 }
@@ -91,7 +91,7 @@ func (x *RegisterRequest) GetServiceId() int64 {
 
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Token         int64                  `protobuf:"varint,1,opt,name=token,proto3" json:"token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -126,17 +126,16 @@ func (*RegisterResponse) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RegisterResponse) GetUserId() int64 {
+func (x *RegisterResponse) GetToken() int64 {
 	if x != nil {
-		return x.UserId
+		return x.Token
 	}
 	return 0
 }
 
 type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	UserHash      int64                  `protobuf:"varint,1,opt,name=userHash,proto3" json:"userHash,omitempty"`
 	ServiceId     int64                  `protobuf:"varint,3,opt,name=service_id,json=serviceId,proto3" json:"service_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -172,18 +171,11 @@ func (*LoginRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *LoginRequest) GetEmail() string {
+func (x *LoginRequest) GetUserHash() int64 {
 	if x != nil {
-		return x.Email
+		return x.UserHash
 	}
-	return ""
-}
-
-func (x *LoginRequest) GetPassword() string {
-	if x != nil {
-		return x.Password
-	}
-	return ""
+	return 0
 }
 
 func (x *LoginRequest) GetServiceId() int64 {
@@ -239,7 +231,7 @@ func (x *LoginResponse) GetToken() string {
 
 type IsAdminRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserHash      int64                  `protobuf:"varint,1,opt,name=userHash,proto3" json:"userHash,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -274,9 +266,9 @@ func (*IsAdminRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *IsAdminRequest) GetUserId() int64 {
+func (x *IsAdminRequest) GetUserHash() int64 {
 	if x != nil {
-		return x.UserId
+		return x.UserHash
 	}
 	return 0
 }
@@ -329,24 +321,23 @@ var File_sso_sso_proto protoreflect.FileDescriptor
 
 const file_sso_sso_proto_rawDesc = "" +
 	"\n" +
-	"\rsso/sso.proto\x12\x04auth\"\xa4\x01\n" +
-	"\x0fRegisterRequest\x12\"\n" +
-	"\fuserDataHash\x18\x01 \x01(\tR\fuserDataHash\x12&\n" +
-	"\x0euserDataUnsafe\x18\x02 \x01(\tR\x0euserDataUnsafe\x12&\n" +
+	"\rsso/sso.proto\x12\x04auth\"\x88\x01\n" +
+	"\x0fRegisterRequest\x12\x12\n" +
+	"\x04hash\x18\x01 \x01(\tR\x04hash\x12\x1a\n" +
+	"\buserData\x18\x02 \x01(\tR\buserData\x12&\n" +
 	"\x0euserNameLocale\x18\x03 \x01(\tR\x0euserNameLocale\x12\x1d\n" +
 	"\n" +
-	"service_id\x18\x04 \x01(\x03R\tserviceId\"+\n" +
-	"\x10RegisterResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"_\n" +
-	"\fLoginRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1d\n" +
+	"service_id\x18\x04 \x01(\x03R\tserviceId\"(\n" +
+	"\x10RegisterResponse\x12\x14\n" +
+	"\x05token\x18\x01 \x01(\x03R\x05token\"I\n" +
+	"\fLoginRequest\x12\x1a\n" +
+	"\buserHash\x18\x01 \x01(\x03R\buserHash\x12\x1d\n" +
 	"\n" +
 	"service_id\x18\x03 \x01(\x03R\tserviceId\"%\n" +
 	"\rLoginResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\")\n" +
-	"\x0eIsAdminRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\",\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\",\n" +
+	"\x0eIsAdminRequest\x12\x1a\n" +
+	"\buserHash\x18\x01 \x01(\x03R\buserHash\",\n" +
 	"\x0fIsAdminResponse\x12\x19\n" +
 	"\bis_admin\x18\x01 \x01(\bR\aisAdmin2\xab\x01\n" +
 	"\x04Auth\x129\n" +

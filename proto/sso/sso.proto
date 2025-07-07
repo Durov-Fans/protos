@@ -11,19 +11,18 @@ service Auth {
 }
 
 message RegisterRequest {
-  string userDataHash = 1;
-  string userDataUnsafe = 2;
+  string hash = 1;
+  string userData = 2;
   string userNameLocale = 3;
   int64 service_id = 4;
 }
 
 message RegisterResponse {
-  int64 user_id = 1;
+  int64 token = 1;
 }
 
 message LoginRequest {
-  string email = 1;
-  string password = 2;
+  int64 userHash = 1;
   int64 service_id = 3;
 }
 
@@ -32,7 +31,7 @@ message LoginResponse{
 }
 
 message IsAdminRequest {
-  int64 user_id = 1;
+  int64 userHash = 1;
 }
 
 message IsAdminResponse{
