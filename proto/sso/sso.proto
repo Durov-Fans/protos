@@ -22,7 +22,7 @@ message RegisterResponse {
 }
 
 message LoginRequest {
-  int64 userHash = 1;
+  string userHash = 1;
   int64 service_id = 3;
 }
 

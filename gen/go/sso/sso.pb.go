@@ -135,7 +135,7 @@ func (x *RegisterResponse) GetToken() int64 {
 
 type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserHash      int64                  `protobuf:"varint,1,opt,name=userHash,proto3" json:"userHash,omitempty"`
+	UserHash      string                 `protobuf:"bytes,1,opt,name=userHash,proto3" json:"userHash,omitempty"`
 	ServiceId     int64                  `protobuf:"varint,3,opt,name=service_id,json=serviceId,proto3" json:"service_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -171,11 +171,11 @@ func (*LoginRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *LoginRequest) GetUserHash() int64 {
+func (x *LoginRequest) GetUserHash() string {
 	if x != nil {
 		return x.UserHash
 	}
-	return 0
+	return ""
 }
 
 func (x *LoginRequest) GetServiceId() int64 {
@@ -331,7 +331,7 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\x10RegisterResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\x03R\x05token\"I\n" +
 	"\fLoginRequest\x12\x1a\n" +
-	"\buserHash\x18\x01 \x01(\x03R\buserHash\x12\x1d\n" +
+	"\buserHash\x18\x01 \x01(\tR\buserHash\x12\x1d\n" +
 	"\n" +
 	"service_id\x18\x03 \x01(\x03R\tserviceId\"%\n" +
 	"\rLoginResponse\x12\x14\n" +
