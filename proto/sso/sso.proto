@@ -31,7 +31,7 @@ message LoginResponse{
 }
 
 message IsAdminRequest {
-  int64 userHash = 1;
+  string userHash = 1;
 }
 
 message IsAdminResponse{

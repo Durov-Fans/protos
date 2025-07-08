@@ -231,7 +231,7 @@ func (x *LoginResponse) GetToken() string {
 
 type IsAdminRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserHash      int64                  `protobuf:"varint,1,opt,name=userHash,proto3" json:"userHash,omitempty"`
+	UserHash      string                 `protobuf:"bytes,1,opt,name=userHash,proto3" json:"userHash,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -266,11 +266,11 @@ func (*IsAdminRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *IsAdminRequest) GetUserHash() int64 {
+func (x *IsAdminRequest) GetUserHash() string {
 	if x != nil {
 		return x.UserHash
 	}
-	return 0
+	return ""
 }
 
 type IsAdminResponse struct {
@@ -337,7 +337,7 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\rLoginResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\",\n" +
 	"\x0eIsAdminRequest\x12\x1a\n" +
-	"\buserHash\x18\x01 \x01(\x03R\buserHash\",\n" +
+	"\buserHash\x18\x01 \x01(\tR\buserHash\",\n" +
 	"\x0fIsAdminResponse\x12\x19\n" +
 	"\bis_admin\x18\x01 \x01(\bR\aisAdmin2\xab\x01\n" +
 	"\x04Auth\x129\n" +
