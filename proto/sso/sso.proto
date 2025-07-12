@@ -24,7 +24,6 @@ message RegisterResponse {
 message ValidateRequest {
   string userHash = 1;
   string userData = 2;
-  int64 userID = 3;
   int64 service_id = 4;
 }
 

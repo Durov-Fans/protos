@@ -137,7 +137,6 @@ type ValidateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserHash      string                 `protobuf:"bytes,1,opt,name=userHash,proto3" json:"userHash,omitempty"`
 	UserData      string                 `protobuf:"bytes,2,opt,name=userData,proto3" json:"userData,omitempty"`
-	UserID        int64                  `protobuf:"varint,3,opt,name=userID,proto3" json:"userID,omitempty"`
 	ServiceId     int64                  `protobuf:"varint,4,opt,name=service_id,json=serviceId,proto3" json:"service_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -185,13 +184,6 @@ func (x *ValidateRequest) GetUserData() string {
 		return x.UserData
 	}
 	return ""
-}
-
-func (x *ValidateRequest) GetUserID() int64 {
-	if x != nil {
-		return x.UserID
-	}
-	return 0
 }
 
 func (x *ValidateRequest) GetServiceId() int64 {
@@ -345,11 +337,10 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\n" +
 	"service_id\x18\x04 \x01(\x03R\tserviceId\"(\n" +
 	"\x10RegisterResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\x03R\x05token\"\x80\x01\n" +
+	"\x05token\x18\x01 \x01(\x03R\x05token\"h\n" +
 	"\x0fValidateRequest\x12\x1a\n" +
 	"\buserHash\x18\x01 \x01(\tR\buserHash\x12\x1a\n" +
-	"\buserData\x18\x02 \x01(\tR\buserData\x12\x16\n" +
-	"\x06userID\x18\x03 \x01(\x03R\x06userID\x12\x1d\n" +
+	"\buserData\x18\x02 \x01(\tR\buserData\x12\x1d\n" +
 	"\n" +
 	"service_id\x18\x04 \x01(\x03R\tserviceId\"(\n" +
 	"\x10ValidateResponse\x12\x14\n" +
