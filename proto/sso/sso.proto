@@ -6,7 +6,7 @@ option go_package = "rach.sso.v1;ssov1";
 
 service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
-  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc Validate (ValidateRequest) returns (ValidateResponse);
   rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
 }
 
@@ -24,7 +24,7 @@ message RegisterResponse {
 message ValidateRequest {
   string userHash = 1;
   string userData = 2;
-  string userID = 3;
+  int64 userID = 3;
   int64 service_id = 4;
 }
 
