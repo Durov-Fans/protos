@@ -21,14 +21,14 @@ message RegisterResponse {
   int64 token = 1;
 }
 
-message LoginRequest {
+message ValidateRequest {
   string userHash = 1;
   string userData = 2;
   string userID = 3;
   int64 service_id = 4;
 }
 
-message LoginResponse{
+message ValidateResponse{
   string token = 1;
 }
 
