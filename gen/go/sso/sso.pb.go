@@ -91,7 +91,7 @@ func (x *RegisterRequest) GetServiceId() int64 {
 
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         int64                  `protobuf:"varint,1,opt,name=token,proto3" json:"token,omitempty"`
+	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -126,11 +126,11 @@ func (*RegisterResponse) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RegisterResponse) GetToken() int64 {
+func (x *RegisterResponse) GetToken() string {
 	if x != nil {
 		return x.Token
 	}
-	return 0
+	return ""
 }
 
 type ValidateRequest struct {
@@ -337,7 +337,7 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\n" +
 	"service_id\x18\x04 \x01(\x03R\tserviceId\"(\n" +
 	"\x10RegisterResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\x03R\x05token\"h\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\"h\n" +
 	"\x0fValidateRequest\x12\x1a\n" +
 	"\buserHash\x18\x01 \x01(\tR\buserHash\x12\x1a\n" +
 	"\buserData\x18\x02 \x01(\tR\buserData\x12\x1d\n" +
