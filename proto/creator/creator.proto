@@ -6,57 +6,15 @@ option go_package = "github.com/Durov-Fans/protos/gen/go/creator;creator";
 
 service CreatorService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
-  rpc EditName(EditNameRequest) returns (EditNameResponse);
-  rpc EditDesc(EditDescRequest) returns (EditDescResponse);
-  rpc EditBanner(EditBannerRequest) returns (EditBannerResponse);
-  rpc EditAvatar(EditAvatarRequest) returns (EditAvatarResponse);
-
 }
 
 message CreateUserRequest{
   int64 user_id = 1;
-  bool tg_user =2;
-  int64 telegram_id = 3;
+  string username = 2;
+  bool tg_user =3;
+  int64 telegram_id = 4;
 }
 
 message CreateUserResponse{
   string status = 1;
-}
-
-message EditNameRequest{
-  int64 UserId = 1;
-  string Name =2;
-}
-
-message EditNameResponse{
-  string status = 1;
-}
-
-message EditDescRequest{
-  int64 UserId = 1;
-  string Desc =2;
-}
-
-message EditDescResponse{
-  string status = 1;
-}
-
-message EditBannerRequest{
-  int64 UserId = 1;
-  bytes BannerData =2;
-}
-
-message EditBannerResponse{
-  string status = 1;
-  string BannerUrl =2;
-}
-
-message EditAvatarRequest{
-  int64 UserId = 1;
-  bytes  AvatarData =2;
-}
-
-message EditAvatarResponse{
-  string status = 1;
-  string AvatarUrl =2;
 }
