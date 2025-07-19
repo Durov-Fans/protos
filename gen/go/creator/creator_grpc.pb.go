@@ -20,10 +20,6 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	CreatorService_CreateUser_FullMethodName = "/creator.CreatorService/CreateUser"
-	CreatorService_EditName_FullMethodName   = "/creator.CreatorService/EditName"
-	CreatorService_EditDesc_FullMethodName   = "/creator.CreatorService/EditDesc"
-	CreatorService_EditBanner_FullMethodName = "/creator.CreatorService/EditBanner"
-	CreatorService_EditAvatar_FullMethodName = "/creator.CreatorService/EditAvatar"
 )
 
 // CreatorServiceClient is the client API for CreatorService service.
@@ -31,10 +27,6 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CreatorServiceClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
-	EditName(ctx context.Context, in *EditNameRequest, opts ...grpc.CallOption) (*EditNameResponse, error)
-	EditDesc(ctx context.Context, in *EditDescRequest, opts ...grpc.CallOption) (*EditDescResponse, error)
-	EditBanner(ctx context.Context, in *EditBannerRequest, opts ...grpc.CallOption) (*EditBannerResponse, error)
-	EditAvatar(ctx context.Context, in *EditAvatarRequest, opts ...grpc.CallOption) (*EditAvatarResponse, error)
 }
 
 type creatorServiceClient struct {
@@ -55,55 +47,11 @@ func (c *creatorServiceClient) CreateUser(ctx context.Context, in *CreateUserReq
 	return out, nil
 }
 
-func (c *creatorServiceClient) EditName(ctx context.Context, in *EditNameRequest, opts ...grpc.CallOption) (*EditNameResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EditNameResponse)
-	err := c.cc.Invoke(ctx, CreatorService_EditName_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *creatorServiceClient) EditDesc(ctx context.Context, in *EditDescRequest, opts ...grpc.CallOption) (*EditDescResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EditDescResponse)
-	err := c.cc.Invoke(ctx, CreatorService_EditDesc_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *creatorServiceClient) EditBanner(ctx context.Context, in *EditBannerRequest, opts ...grpc.CallOption) (*EditBannerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EditBannerResponse)
-	err := c.cc.Invoke(ctx, CreatorService_EditBanner_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *creatorServiceClient) EditAvatar(ctx context.Context, in *EditAvatarRequest, opts ...grpc.CallOption) (*EditAvatarResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(EditAvatarResponse)
-	err := c.cc.Invoke(ctx, CreatorService_EditAvatar_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // CreatorServiceServer is the server API for CreatorService service.
 // All implementations must embed UnimplementedCreatorServiceServer
 // for forward compatibility.
 type CreatorServiceServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
-	EditName(context.Context, *EditNameRequest) (*EditNameResponse, error)
-	EditDesc(context.Context, *EditDescRequest) (*EditDescResponse, error)
-	EditBanner(context.Context, *EditBannerRequest) (*EditBannerResponse, error)
-	EditAvatar(context.Context, *EditAvatarRequest) (*EditAvatarResponse, error)
 	mustEmbedUnimplementedCreatorServiceServer()
 }
 
@@ -116,18 +64,6 @@ type UnimplementedCreatorServiceServer struct{}
 
 func (UnimplementedCreatorServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
-}
-func (UnimplementedCreatorServiceServer) EditName(context.Context, *EditNameRequest) (*EditNameResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EditName not implemented")
-}
-func (UnimplementedCreatorServiceServer) EditDesc(context.Context, *EditDescRequest) (*EditDescResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EditDesc not implemented")
-}
-func (UnimplementedCreatorServiceServer) EditBanner(context.Context, *EditBannerRequest) (*EditBannerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EditBanner not implemented")
-}
-func (UnimplementedCreatorServiceServer) EditAvatar(context.Context, *EditAvatarRequest) (*EditAvatarResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EditAvatar not implemented")
 }
 func (UnimplementedCreatorServiceServer) mustEmbedUnimplementedCreatorServiceServer() {}
 func (UnimplementedCreatorServiceServer) testEmbeddedByValue()                        {}
@@ -168,78 +104,6 @@ func _CreatorService_CreateUser_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CreatorService_EditName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EditNameRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CreatorServiceServer).EditName(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CreatorService_EditName_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CreatorServiceServer).EditName(ctx, req.(*EditNameRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CreatorService_EditDesc_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EditDescRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CreatorServiceServer).EditDesc(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CreatorService_EditDesc_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CreatorServiceServer).EditDesc(ctx, req.(*EditDescRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CreatorService_EditBanner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EditBannerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CreatorServiceServer).EditBanner(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CreatorService_EditBanner_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CreatorServiceServer).EditBanner(ctx, req.(*EditBannerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CreatorService_EditAvatar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EditAvatarRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CreatorServiceServer).EditAvatar(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CreatorService_EditAvatar_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CreatorServiceServer).EditAvatar(ctx, req.(*EditAvatarRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // CreatorService_ServiceDesc is the grpc.ServiceDesc for CreatorService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -250,22 +114,6 @@ var CreatorService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateUser",
 			Handler:    _CreatorService_CreateUser_Handler,
-		},
-		{
-			MethodName: "EditName",
-			Handler:    _CreatorService_EditName_Handler,
-		},
-		{
-			MethodName: "EditDesc",
-			Handler:    _CreatorService_EditDesc_Handler,
-		},
-		{
-			MethodName: "EditBanner",
-			Handler:    _CreatorService_EditBanner_Handler,
-		},
-		{
-			MethodName: "EditAvatar",
-			Handler:    _CreatorService_EditAvatar_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
