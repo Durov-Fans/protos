@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package  post;
+
+option go_package = "github.com/Durov-Fans/protos/gen/go/post;post";
+
+service PostService {
+  rpc CreatePost(CreatePostRequest) returns (CreatePostResponse);
+}
+
+message CreatePostRequest {
+  int64 userid = 1;
+  string  title = 2;
+  string media = 3;
+  bool paid = 4;
+  string sub_level = 5;
+}
+
+message CreatePostResponse {
+  bool success = 1;
+}
+
