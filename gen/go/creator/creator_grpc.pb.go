@@ -28,7 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CreatorServiceClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
-	GetTierPrice(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
+	GetTierPrice(ctx context.Context, in *GetTierPriceRequest, opts ...grpc.CallOption) (*GetTierPriceResponse, error)
 }
 
 type creatorServiceClient struct {
@@ -49,9 +49,9 @@ func (c *creatorServiceClient) CreateUser(ctx context.Context, in *CreateUserReq
 	return out, nil
 }
 
-func (c *creatorServiceClient) GetTierPrice(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
+func (c *creatorServiceClient) GetTierPrice(ctx context.Context, in *GetTierPriceRequest, opts ...grpc.CallOption) (*GetTierPriceResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateUserResponse)
+	out := new(GetTierPriceResponse)
 	err := c.cc.Invoke(ctx, CreatorService_GetTierPrice_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -64,7 +64,7 @@ func (c *creatorServiceClient) GetTierPrice(ctx context.Context, in *CreateUserR
 // for forward compatibility.
 type CreatorServiceServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
-	GetTierPrice(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
+	GetTierPrice(context.Context, *GetTierPriceRequest) (*GetTierPriceResponse, error)
 	mustEmbedUnimplementedCreatorServiceServer()
 }
 
@@ -78,7 +78,7 @@ type UnimplementedCreatorServiceServer struct{}
 func (UnimplementedCreatorServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
-func (UnimplementedCreatorServiceServer) GetTierPrice(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
+func (UnimplementedCreatorServiceServer) GetTierPrice(context.Context, *GetTierPriceRequest) (*GetTierPriceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTierPrice not implemented")
 }
 func (UnimplementedCreatorServiceServer) mustEmbedUnimplementedCreatorServiceServer() {}
@@ -121,7 +121,7 @@ func _CreatorService_CreateUser_Handler(srv interface{}, ctx context.Context, de
 }
 
 func _CreatorService_GetTierPrice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateUserRequest)
+	in := new(GetTierPriceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -133,7 +133,7 @@ func _CreatorService_GetTierPrice_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: CreatorService_GetTierPrice_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CreatorServiceServer).GetTierPrice(ctx, req.(*CreateUserRequest))
+		return srv.(CreatorServiceServer).GetTierPrice(ctx, req.(*GetTierPriceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

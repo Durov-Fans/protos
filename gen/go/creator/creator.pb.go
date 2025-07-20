@@ -237,11 +237,11 @@ const file_creator_creator_proto_rawDesc = "" +
 	"\x13GetTierPriceRequest\x12\x16\n" +
 	"\x06TierId\x18\x01 \x01(\x03R\x06TierId\"4\n" +
 	"\x14GetTierPriceResponse\x12\x1c\n" +
-	"\tTierPrice\x18\x01 \x01(\x02R\tTierPrice2\xa0\x01\n" +
+	"\tTierPrice\x18\x01 \x01(\x02R\tTierPrice2\xa4\x01\n" +
 	"\x0eCreatorService\x12E\n" +
 	"\n" +
-	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponse\x12G\n" +
-	"\fGetTierPrice\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
+	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponse\x12K\n" +
+	"\fGetTierPrice\x12\x1c.creator.GetTierPriceRequest\x1a\x1d.creator.GetTierPriceResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
 
 var (
 	file_creator_creator_proto_rawDescOnce sync.Once
@@ -264,9 +264,9 @@ var file_creator_creator_proto_goTypes = []any{
 }
 var file_creator_creator_proto_depIdxs = []int32{
 	0, // 0: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
-	0, // 1: creator.CreatorService.GetTierPrice:input_type -> creator.CreateUserRequest
+	2, // 1: creator.CreatorService.GetTierPrice:input_type -> creator.GetTierPriceRequest
 	1, // 2: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
-	1, // 3: creator.CreatorService.GetTierPrice:output_type -> creator.CreateUserResponse
+	3, // 3: creator.CreatorService.GetTierPrice:output_type -> creator.GetTierPriceResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

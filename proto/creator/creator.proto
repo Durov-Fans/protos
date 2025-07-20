@@ -6,7 +6,7 @@ option go_package = "github.com/Durov-Fans/protos/gen/go/creator;creator";
 
 service CreatorService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
-  rpc GetTierPrice(CreateUserRequest) returns (CreateUserResponse);
+  rpc GetTierPrice(GetTierPriceRequest) returns (GetTierPriceResponse);
 }
 
 message CreateUserRequest{
