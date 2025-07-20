@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package payment;
+
+option go_package = "github.com/Durov-Fans/protos/gen/go/payment;payment";
+
+service CreatorService {
+  rpc GetTierPrice(GetTierPriceRequest) returns (GetTierPriceResponse);
+}
+
+message GetTierPriceRequest{
+  int64 TierId = 1;
+}
+
+message GetTierPriceResponse{
+  float TierPrice = 1;
+}
