@@ -133,6 +133,94 @@ func (x *CreateUserResponse) GetStatus() string {
 	return ""
 }
 
+type GetTierPriceRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TierId        int64                  `protobuf:"varint,1,opt,name=TierId,proto3" json:"TierId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTierPriceRequest) Reset() {
+	*x = GetTierPriceRequest{}
+	mi := &file_creator_creator_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTierPriceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTierPriceRequest) ProtoMessage() {}
+
+func (x *GetTierPriceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTierPriceRequest.ProtoReflect.Descriptor instead.
+func (*GetTierPriceRequest) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetTierPriceRequest) GetTierId() int64 {
+	if x != nil {
+		return x.TierId
+	}
+	return 0
+}
+
+type GetTierPriceResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TierPrice     float32                `protobuf:"fixed32,1,opt,name=TierPrice,proto3" json:"TierPrice,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTierPriceResponse) Reset() {
+	*x = GetTierPriceResponse{}
+	mi := &file_creator_creator_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTierPriceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTierPriceResponse) ProtoMessage() {}
+
+func (x *GetTierPriceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTierPriceResponse.ProtoReflect.Descriptor instead.
+func (*GetTierPriceResponse) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetTierPriceResponse) GetTierPrice() float32 {
+	if x != nil {
+		return x.TierPrice
+	}
+	return 0
+}
+
 var File_creator_creator_proto protoreflect.FileDescriptor
 
 const file_creator_creator_proto_rawDesc = "" +
@@ -145,10 +233,15 @@ const file_creator_creator_proto_rawDesc = "" +
 	"\vtelegram_id\x18\x04 \x01(\x03R\n" +
 	"telegramId\",\n" +
 	"\x12CreateUserResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status2W\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"-\n" +
+	"\x13GetTierPriceRequest\x12\x16\n" +
+	"\x06TierId\x18\x01 \x01(\x03R\x06TierId\"4\n" +
+	"\x14GetTierPriceResponse\x12\x1c\n" +
+	"\tTierPrice\x18\x01 \x01(\x02R\tTierPrice2\xa0\x01\n" +
 	"\x0eCreatorService\x12E\n" +
 	"\n" +
-	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
+	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponse\x12G\n" +
+	"\fGetTierPrice\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
 
 var (
 	file_creator_creator_proto_rawDescOnce sync.Once
@@ -162,16 +255,20 @@ func file_creator_creator_proto_rawDescGZIP() []byte {
 	return file_creator_creator_proto_rawDescData
 }
 
-var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_creator_creator_proto_goTypes = []any{
-	(*CreateUserRequest)(nil),  // 0: creator.CreateUserRequest
-	(*CreateUserResponse)(nil), // 1: creator.CreateUserResponse
+	(*CreateUserRequest)(nil),    // 0: creator.CreateUserRequest
+	(*CreateUserResponse)(nil),   // 1: creator.CreateUserResponse
+	(*GetTierPriceRequest)(nil),  // 2: creator.GetTierPriceRequest
+	(*GetTierPriceResponse)(nil), // 3: creator.GetTierPriceResponse
 }
 var file_creator_creator_proto_depIdxs = []int32{
 	0, // 0: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
-	1, // 1: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	0, // 1: creator.CreatorService.GetTierPrice:input_type -> creator.CreateUserRequest
+	1, // 2: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
+	1, // 3: creator.CreatorService.GetTierPrice:output_type -> creator.CreateUserResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -188,7 +285,7 @@ func file_creator_creator_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_creator_creator_proto_rawDesc), len(file_creator_creator_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

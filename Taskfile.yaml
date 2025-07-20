@@ -21,5 +21,3 @@ tasks:
     cmds:
       - task: gen-sso
       - task: gen-creator
-      - task: gen-payment
-
