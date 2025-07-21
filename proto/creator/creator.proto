@@ -8,6 +8,7 @@ service CreatorService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
   rpc GetTierPrice(GetTierPriceRequest) returns (GetTierPriceResponse);
   rpc UpdateUserBalance(UpdateUserBalanceRequest) returns (UpdateUserBalanceResponse);
+
 }
 
 message CreateUserRequest{
