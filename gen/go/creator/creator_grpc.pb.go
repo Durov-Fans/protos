@@ -19,8 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CreatorService_CreateUser_FullMethodName   = "/creator.CreatorService/CreateUser"
-	CreatorService_GetTierPrice_FullMethodName = "/creator.CreatorService/GetTierPrice"
+	CreatorService_CreateUser_FullMethodName        = "/creator.CreatorService/CreateUser"
+	CreatorService_GetTierPrice_FullMethodName      = "/creator.CreatorService/GetTierPrice"
+	CreatorService_UpdateUserBalance_FullMethodName = "/creator.CreatorService/UpdateUserBalance"
 )
 
 // CreatorServiceClient is the client API for CreatorService service.
@@ -29,6 +30,7 @@ const (
 type CreatorServiceClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 	GetTierPrice(ctx context.Context, in *GetTierPriceRequest, opts ...grpc.CallOption) (*GetTierPriceResponse, error)
+	UpdateUserBalance(ctx context.Context, in *UpdateUserBalanceRequest, opts ...grpc.CallOption) (*UpdateUserBalanceResponse, error)
 }
 
 type creatorServiceClient struct {
@@ -59,12 +61,23 @@ func (c *creatorServiceClient) GetTierPrice(ctx context.Context, in *GetTierPric
 	return out, nil
 }
 
+func (c *creatorServiceClient) UpdateUserBalance(ctx context.Context, in *UpdateUserBalanceRequest, opts ...grpc.CallOption) (*UpdateUserBalanceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUserBalanceResponse)
+	err := c.cc.Invoke(ctx, CreatorService_UpdateUserBalance_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CreatorServiceServer is the server API for CreatorService service.
 // All implementations must embed UnimplementedCreatorServiceServer
 // for forward compatibility.
 type CreatorServiceServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 	GetTierPrice(context.Context, *GetTierPriceRequest) (*GetTierPriceResponse, error)
+	UpdateUserBalance(context.Context, *UpdateUserBalanceRequest) (*UpdateUserBalanceResponse, error)
 	mustEmbedUnimplementedCreatorServiceServer()
 }
 
@@ -80,6 +93,9 @@ func (UnimplementedCreatorServiceServer) CreateUser(context.Context, *CreateUser
 }
 func (UnimplementedCreatorServiceServer) GetTierPrice(context.Context, *GetTierPriceRequest) (*GetTierPriceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTierPrice not implemented")
+}
+func (UnimplementedCreatorServiceServer) UpdateUserBalance(context.Context, *UpdateUserBalanceRequest) (*UpdateUserBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserBalance not implemented")
 }
 func (UnimplementedCreatorServiceServer) mustEmbedUnimplementedCreatorServiceServer() {}
 func (UnimplementedCreatorServiceServer) testEmbeddedByValue()                        {}
@@ -138,6 +154,24 @@ func _CreatorService_GetTierPrice_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CreatorService_UpdateUserBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CreatorServiceServer).UpdateUserBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CreatorService_UpdateUserBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CreatorServiceServer).UpdateUserBalance(ctx, req.(*UpdateUserBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CreatorService_ServiceDesc is the grpc.ServiceDesc for CreatorService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +186,10 @@ var CreatorService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTierPrice",
 			Handler:    _CreatorService_GetTierPrice_Handler,
+		},
+		{
+			MethodName: "UpdateUserBalance",
+			Handler:    _CreatorService_UpdateUserBalance_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

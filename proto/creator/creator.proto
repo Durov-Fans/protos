@@ -7,7 +7,7 @@ option go_package = "github.com/Durov-Fans/protos/gen/go/creator;creator";
 service CreatorService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
   rpc GetTierPrice(GetTierPriceRequest) returns (GetTierPriceResponse);
-  
+  rpc UpdateUserBalance(UpdateUserBalanceRequest) returns (UpdateUserBalanceResponse);
 }
 
 message CreateUserRequest{
@@ -27,4 +27,13 @@ message GetTierPriceRequest{
 
 message GetTierPriceResponse{
   float TierPrice = 1;
+}
+
+message UpdateUserBalanceRequest{
+  int64 UserId = 1;
+  float UpdateAmount = 2;
+}
+
+message UpdateUserBalanceResponse{
+  string Status = 1;
 }
