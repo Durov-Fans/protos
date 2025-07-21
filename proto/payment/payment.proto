@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package creator;
+
+option go_package = "github.com/Durov-Fans/protos/gen/go/payment;payment";
+
+service CreatorService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+}
+
+message CreateUserRequest{
+  int64 user_id = 1;
+}
+
+message CreateUserResponse{
+  string status = 1;
+}
+
