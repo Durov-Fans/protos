@@ -48,7 +48,6 @@ message TierAndCreator {
   string tier_type = 2;
 }
 
-
 message GetTierAndCreatorIdResponse{
   repeated TierAndCreator data = 1;
 
