@@ -8,6 +8,7 @@ service CreatorService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
   rpc GetTierPrice(GetTierPriceRequest) returns (GetTierPriceResponse);
   rpc BuySub(BuySubRequest) returns (BuySubResponse);
+  rpc GetTierAndCreatorId(GetTierAndCreatorIdRequest) returns (GetTierAndCreatorIdResponse);
 }
 
 message CreateUserRequest{
@@ -36,4 +37,13 @@ message BuySubRequest{
 
 message BuySubResponse{
   string Status = 1;
+}
+
+message GetTierAndCreatorIdRequest{
+  int64 UserId =1;
+}
+
+message GetTierAndCreatorIdResponse{
+  int64 CreatorId =1;
+  string TierType =2;
 }

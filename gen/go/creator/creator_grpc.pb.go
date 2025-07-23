@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CreatorService_CreateUser_FullMethodName   = "/creator.CreatorService/CreateUser"
-	CreatorService_GetTierPrice_FullMethodName = "/creator.CreatorService/GetTierPrice"
-	CreatorService_BuySub_FullMethodName       = "/creator.CreatorService/BuySub"
+	CreatorService_CreateUser_FullMethodName          = "/creator.CreatorService/CreateUser"
+	CreatorService_GetTierPrice_FullMethodName        = "/creator.CreatorService/GetTierPrice"
+	CreatorService_BuySub_FullMethodName              = "/creator.CreatorService/BuySub"
+	CreatorService_GetTierAndCreatorId_FullMethodName = "/creator.CreatorService/GetTierAndCreatorId"
 )
 
 // CreatorServiceClient is the client API for CreatorService service.
@@ -31,6 +32,7 @@ type CreatorServiceClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 	GetTierPrice(ctx context.Context, in *GetTierPriceRequest, opts ...grpc.CallOption) (*GetTierPriceResponse, error)
 	BuySub(ctx context.Context, in *BuySubRequest, opts ...grpc.CallOption) (*BuySubResponse, error)
+	GetTierAndCreatorId(ctx context.Context, in *GetTierAndCreatorIdRequest, opts ...grpc.CallOption) (*GetTierAndCreatorIdResponse, error)
 }
 
 type creatorServiceClient struct {
@@ -71,6 +73,16 @@ func (c *creatorServiceClient) BuySub(ctx context.Context, in *BuySubRequest, op
 	return out, nil
 }
 
+func (c *creatorServiceClient) GetTierAndCreatorId(ctx context.Context, in *GetTierAndCreatorIdRequest, opts ...grpc.CallOption) (*GetTierAndCreatorIdResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetTierAndCreatorIdResponse)
+	err := c.cc.Invoke(ctx, CreatorService_GetTierAndCreatorId_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CreatorServiceServer is the server API for CreatorService service.
 // All implementations must embed UnimplementedCreatorServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type CreatorServiceServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 	GetTierPrice(context.Context, *GetTierPriceRequest) (*GetTierPriceResponse, error)
 	BuySub(context.Context, *BuySubRequest) (*BuySubResponse, error)
+	GetTierAndCreatorId(context.Context, *GetTierAndCreatorIdRequest) (*GetTierAndCreatorIdResponse, error)
 	mustEmbedUnimplementedCreatorServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedCreatorServiceServer) GetTierPrice(context.Context, *GetTierP
 }
 func (UnimplementedCreatorServiceServer) BuySub(context.Context, *BuySubRequest) (*BuySubResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BuySub not implemented")
+}
+func (UnimplementedCreatorServiceServer) GetTierAndCreatorId(context.Context, *GetTierAndCreatorIdRequest) (*GetTierAndCreatorIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTierAndCreatorId not implemented")
 }
 func (UnimplementedCreatorServiceServer) mustEmbedUnimplementedCreatorServiceServer() {}
 func (UnimplementedCreatorServiceServer) testEmbeddedByValue()                        {}
@@ -172,6 +188,24 @@ func _CreatorService_BuySub_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CreatorService_GetTierAndCreatorId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTierAndCreatorIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CreatorServiceServer).GetTierAndCreatorId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CreatorService_GetTierAndCreatorId_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CreatorServiceServer).GetTierAndCreatorId(ctx, req.(*GetTierAndCreatorIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CreatorService_ServiceDesc is the grpc.ServiceDesc for CreatorService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var CreatorService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BuySub",
 			Handler:    _CreatorService_BuySub_Handler,
+		},
+		{
+			MethodName: "GetTierAndCreatorId",
+			Handler:    _CreatorService_GetTierAndCreatorId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
