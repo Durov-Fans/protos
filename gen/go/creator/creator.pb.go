@@ -361,17 +361,68 @@ func (x *GetTierAndCreatorIdRequest) GetUserId() int64 {
 	return 0
 }
 
+type TierAndCreator struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CreatorId     int64                  `protobuf:"varint,1,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
+	TierType      string                 `protobuf:"bytes,2,opt,name=tier_type,json=tierType,proto3" json:"tier_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TierAndCreator) Reset() {
+	*x = TierAndCreator{}
+	mi := &file_creator_creator_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TierAndCreator) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TierAndCreator) ProtoMessage() {}
+
+func (x *TierAndCreator) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TierAndCreator.ProtoReflect.Descriptor instead.
+func (*TierAndCreator) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *TierAndCreator) GetCreatorId() int64 {
+	if x != nil {
+		return x.CreatorId
+	}
+	return 0
+}
+
+func (x *TierAndCreator) GetTierType() string {
+	if x != nil {
+		return x.TierType
+	}
+	return ""
+}
+
 type GetTierAndCreatorIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CreatorId     int64                  `protobuf:"varint,1,opt,name=CreatorId,proto3" json:"CreatorId,omitempty"`
-	TierType      string                 `protobuf:"bytes,2,opt,name=TierType,proto3" json:"TierType,omitempty"`
+	Data          []*TierAndCreator      `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetTierAndCreatorIdResponse) Reset() {
 	*x = GetTierAndCreatorIdResponse{}
-	mi := &file_creator_creator_proto_msgTypes[7]
+	mi := &file_creator_creator_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -383,7 +434,7 @@ func (x *GetTierAndCreatorIdResponse) String() string {
 func (*GetTierAndCreatorIdResponse) ProtoMessage() {}
 
 func (x *GetTierAndCreatorIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_creator_creator_proto_msgTypes[7]
+	mi := &file_creator_creator_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -396,21 +447,14 @@ func (x *GetTierAndCreatorIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTierAndCreatorIdResponse.ProtoReflect.Descriptor instead.
 func (*GetTierAndCreatorIdResponse) Descriptor() ([]byte, []int) {
-	return file_creator_creator_proto_rawDescGZIP(), []int{7}
+	return file_creator_creator_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *GetTierAndCreatorIdResponse) GetCreatorId() int64 {
+func (x *GetTierAndCreatorIdResponse) GetData() []*TierAndCreator {
 	if x != nil {
-		return x.CreatorId
+		return x.Data
 	}
-	return 0
-}
-
-func (x *GetTierAndCreatorIdResponse) GetTierType() string {
-	if x != nil {
-		return x.TierType
-	}
-	return ""
+	return nil
 }
 
 var File_creator_creator_proto protoreflect.FileDescriptor
@@ -436,10 +480,13 @@ const file_creator_creator_proto_rawDesc = "" +
 	"\x0eBuySubResponse\x12\x16\n" +
 	"\x06Status\x18\x01 \x01(\tR\x06Status\"4\n" +
 	"\x1aGetTierAndCreatorIdRequest\x12\x16\n" +
-	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\"W\n" +
-	"\x1bGetTierAndCreatorIdResponse\x12\x1c\n" +
-	"\tCreatorId\x18\x01 \x01(\x03R\tCreatorId\x12\x1a\n" +
-	"\bTierType\x18\x02 \x01(\tR\bTierType2\xc1\x02\n" +
+	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\"L\n" +
+	"\x0eTierAndCreator\x12\x1d\n" +
+	"\n" +
+	"creator_id\x18\x01 \x01(\x03R\tcreatorId\x12\x1b\n" +
+	"\ttier_type\x18\x02 \x01(\tR\btierType\"J\n" +
+	"\x1bGetTierAndCreatorIdResponse\x12+\n" +
+	"\x04data\x18\x01 \x03(\v2\x17.creator.TierAndCreatorR\x04data2\xc1\x02\n" +
 	"\x0eCreatorService\x12E\n" +
 	"\n" +
 	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponse\x12K\n" +
@@ -459,7 +506,7 @@ func file_creator_creator_proto_rawDescGZIP() []byte {
 	return file_creator_creator_proto_rawDescData
 }
 
-var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_creator_creator_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),           // 0: creator.CreateUserRequest
 	(*CreateUserResponse)(nil),          // 1: creator.CreateUserResponse
@@ -468,22 +515,24 @@ var file_creator_creator_proto_goTypes = []any{
 	(*BuySubRequest)(nil),               // 4: creator.BuySubRequest
 	(*BuySubResponse)(nil),              // 5: creator.BuySubResponse
 	(*GetTierAndCreatorIdRequest)(nil),  // 6: creator.GetTierAndCreatorIdRequest
-	(*GetTierAndCreatorIdResponse)(nil), // 7: creator.GetTierAndCreatorIdResponse
+	(*TierAndCreator)(nil),              // 7: creator.TierAndCreator
+	(*GetTierAndCreatorIdResponse)(nil), // 8: creator.GetTierAndCreatorIdResponse
 }
 var file_creator_creator_proto_depIdxs = []int32{
-	0, // 0: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
-	2, // 1: creator.CreatorService.GetTierPrice:input_type -> creator.GetTierPriceRequest
-	4, // 2: creator.CreatorService.BuySub:input_type -> creator.BuySubRequest
-	6, // 3: creator.CreatorService.GetTierAndCreatorId:input_type -> creator.GetTierAndCreatorIdRequest
-	1, // 4: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
-	3, // 5: creator.CreatorService.GetTierPrice:output_type -> creator.GetTierPriceResponse
-	5, // 6: creator.CreatorService.BuySub:output_type -> creator.BuySubResponse
-	7, // 7: creator.CreatorService.GetTierAndCreatorId:output_type -> creator.GetTierAndCreatorIdResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	7, // 0: creator.GetTierAndCreatorIdResponse.data:type_name -> creator.TierAndCreator
+	0, // 1: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
+	2, // 2: creator.CreatorService.GetTierPrice:input_type -> creator.GetTierPriceRequest
+	4, // 3: creator.CreatorService.BuySub:input_type -> creator.BuySubRequest
+	6, // 4: creator.CreatorService.GetTierAndCreatorId:input_type -> creator.GetTierAndCreatorIdRequest
+	1, // 5: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
+	3, // 6: creator.CreatorService.GetTierPrice:output_type -> creator.GetTierPriceResponse
+	5, // 7: creator.CreatorService.BuySub:output_type -> creator.BuySubResponse
+	8, // 8: creator.CreatorService.GetTierAndCreatorId:output_type -> creator.GetTierAndCreatorIdResponse
+	5, // [5:9] is the sub-list for method output_type
+	1, // [1:5] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_creator_creator_proto_init() }
@@ -497,7 +546,7 @@ func file_creator_creator_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_creator_creator_proto_rawDesc), len(file_creator_creator_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

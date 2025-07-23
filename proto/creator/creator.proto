@@ -43,7 +43,13 @@ message GetTierAndCreatorIdRequest{
   int64 UserId =1;
 }
 
+message TierAndCreator {
+  int64 creator_id = 1;
+  string tier_type = 2;
+}
+
+
 message GetTierAndCreatorIdResponse{
-  int64 CreatorId =1;
-  string TierType =2;
+  repeated TierAndCreator data = 1;
+
 }
