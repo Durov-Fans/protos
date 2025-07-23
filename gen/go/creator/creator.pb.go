@@ -221,28 +221,28 @@ func (x *GetTierPriceResponse) GetTierPrice() float32 {
 	return 0
 }
 
-type UpdateUserBalanceRequest struct {
+type BuySubRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=UserId,proto3" json:"UserId,omitempty"`
-	UpdateAmount  float32                `protobuf:"fixed32,2,opt,name=UpdateAmount,proto3" json:"UpdateAmount,omitempty"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	TierId        int64                  `protobuf:"varint,2,opt,name=TierId,proto3" json:"TierId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUserBalanceRequest) Reset() {
-	*x = UpdateUserBalanceRequest{}
+func (x *BuySubRequest) Reset() {
+	*x = BuySubRequest{}
 	mi := &file_creator_creator_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUserBalanceRequest) String() string {
+func (x *BuySubRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUserBalanceRequest) ProtoMessage() {}
+func (*BuySubRequest) ProtoMessage() {}
 
-func (x *UpdateUserBalanceRequest) ProtoReflect() protoreflect.Message {
+func (x *BuySubRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_creator_creator_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -254,46 +254,46 @@ func (x *UpdateUserBalanceRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUserBalanceRequest.ProtoReflect.Descriptor instead.
-func (*UpdateUserBalanceRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use BuySubRequest.ProtoReflect.Descriptor instead.
+func (*BuySubRequest) Descriptor() ([]byte, []int) {
 	return file_creator_creator_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateUserBalanceRequest) GetUserId() int64 {
+func (x *BuySubRequest) GetUserId() int64 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-func (x *UpdateUserBalanceRequest) GetUpdateAmount() float32 {
+func (x *BuySubRequest) GetTierId() int64 {
 	if x != nil {
-		return x.UpdateAmount
+		return x.TierId
 	}
 	return 0
 }
 
-type UpdateUserBalanceResponse struct {
+type BuySubResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        string                 `protobuf:"bytes,1,opt,name=Status,proto3" json:"Status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateUserBalanceResponse) Reset() {
-	*x = UpdateUserBalanceResponse{}
+func (x *BuySubResponse) Reset() {
+	*x = BuySubResponse{}
 	mi := &file_creator_creator_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateUserBalanceResponse) String() string {
+func (x *BuySubResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateUserBalanceResponse) ProtoMessage() {}
+func (*BuySubResponse) ProtoMessage() {}
 
-func (x *UpdateUserBalanceResponse) ProtoReflect() protoreflect.Message {
+func (x *BuySubResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_creator_creator_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -305,12 +305,12 @@ func (x *UpdateUserBalanceResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateUserBalanceResponse.ProtoReflect.Descriptor instead.
-func (*UpdateUserBalanceResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use BuySubResponse.ProtoReflect.Descriptor instead.
+func (*BuySubResponse) Descriptor() ([]byte, []int) {
 	return file_creator_creator_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UpdateUserBalanceResponse) GetStatus() string {
+func (x *BuySubResponse) GetStatus() string {
 	if x != nil {
 		return x.Status
 	}
@@ -333,17 +333,17 @@ const file_creator_creator_proto_rawDesc = "" +
 	"\x13GetTierPriceRequest\x12\x16\n" +
 	"\x06TierId\x18\x01 \x01(\x03R\x06TierId\"4\n" +
 	"\x14GetTierPriceResponse\x12\x1c\n" +
-	"\tTierPrice\x18\x01 \x01(\x02R\tTierPrice\"V\n" +
-	"\x18UpdateUserBalanceRequest\x12\x16\n" +
-	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\"\n" +
-	"\fUpdateAmount\x18\x02 \x01(\x02R\fUpdateAmount\"3\n" +
-	"\x19UpdateUserBalanceResponse\x12\x16\n" +
-	"\x06Status\x18\x01 \x01(\tR\x06Status2\x80\x02\n" +
+	"\tTierPrice\x18\x01 \x01(\x02R\tTierPrice\"@\n" +
+	"\rBuySubRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x16\n" +
+	"\x06TierId\x18\x02 \x01(\x03R\x06TierId\"(\n" +
+	"\x0eBuySubResponse\x12\x16\n" +
+	"\x06Status\x18\x01 \x01(\tR\x06Status2\xdf\x01\n" +
 	"\x0eCreatorService\x12E\n" +
 	"\n" +
 	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponse\x12K\n" +
-	"\fGetTierPrice\x12\x1c.creator.GetTierPriceRequest\x1a\x1d.creator.GetTierPriceResponse\x12Z\n" +
-	"\x11UpdateUserBalance\x12!.creator.UpdateUserBalanceRequest\x1a\".creator.UpdateUserBalanceResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
+	"\fGetTierPrice\x12\x1c.creator.GetTierPriceRequest\x1a\x1d.creator.GetTierPriceResponse\x129\n" +
+	"\x06BuySub\x12\x16.creator.BuySubRequest\x1a\x17.creator.BuySubResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
 
 var (
 	file_creator_creator_proto_rawDescOnce sync.Once
@@ -359,20 +359,20 @@ func file_creator_creator_proto_rawDescGZIP() []byte {
 
 var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_creator_creator_proto_goTypes = []any{
-	(*CreateUserRequest)(nil),         // 0: creator.CreateUserRequest
-	(*CreateUserResponse)(nil),        // 1: creator.CreateUserResponse
-	(*GetTierPriceRequest)(nil),       // 2: creator.GetTierPriceRequest
-	(*GetTierPriceResponse)(nil),      // 3: creator.GetTierPriceResponse
-	(*UpdateUserBalanceRequest)(nil),  // 4: creator.UpdateUserBalanceRequest
-	(*UpdateUserBalanceResponse)(nil), // 5: creator.UpdateUserBalanceResponse
+	(*CreateUserRequest)(nil),    // 0: creator.CreateUserRequest
+	(*CreateUserResponse)(nil),   // 1: creator.CreateUserResponse
+	(*GetTierPriceRequest)(nil),  // 2: creator.GetTierPriceRequest
+	(*GetTierPriceResponse)(nil), // 3: creator.GetTierPriceResponse
+	(*BuySubRequest)(nil),        // 4: creator.BuySubRequest
+	(*BuySubResponse)(nil),       // 5: creator.BuySubResponse
 }
 var file_creator_creator_proto_depIdxs = []int32{
 	0, // 0: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
 	2, // 1: creator.CreatorService.GetTierPrice:input_type -> creator.GetTierPriceRequest
-	4, // 2: creator.CreatorService.UpdateUserBalance:input_type -> creator.UpdateUserBalanceRequest
+	4, // 2: creator.CreatorService.BuySub:input_type -> creator.BuySubRequest
 	1, // 3: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
 	3, // 4: creator.CreatorService.GetTierPrice:output_type -> creator.GetTierPriceResponse
-	5, // 5: creator.CreatorService.UpdateUserBalance:output_type -> creator.UpdateUserBalanceResponse
+	5, // 5: creator.CreatorService.BuySub:output_type -> creator.BuySubResponse
 	3, // [3:6] is the sub-list for method output_type
 	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
