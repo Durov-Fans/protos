@@ -50,5 +50,4 @@ message TierAndCreator {
 
 message GetTierAndCreatorIdResponse{
   repeated TierAndCreator data = 1;
-
 }
