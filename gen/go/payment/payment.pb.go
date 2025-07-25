@@ -21,27 +21,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type CreateUserRequest struct {
+type CreatePaymentUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateUserRequest) Reset() {
-	*x = CreateUserRequest{}
+func (x *CreatePaymentUserRequest) Reset() {
+	*x = CreatePaymentUserRequest{}
 	mi := &file_payment_payment_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateUserRequest) String() string {
+func (x *CreatePaymentUserRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateUserRequest) ProtoMessage() {}
+func (*CreatePaymentUserRequest) ProtoMessage() {}
 
-func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
+func (x *CreatePaymentUserRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_payment_payment_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -53,39 +53,39 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
-func (*CreateUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreatePaymentUserRequest.ProtoReflect.Descriptor instead.
+func (*CreatePaymentUserRequest) Descriptor() ([]byte, []int) {
 	return file_payment_payment_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateUserRequest) GetUserId() int64 {
+func (x *CreatePaymentUserRequest) GetUserId() int64 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-type CreateUserResponse struct {
+type CreatePaymentUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CreateUserResponse) Reset() {
-	*x = CreateUserResponse{}
+func (x *CreatePaymentUserResponse) Reset() {
+	*x = CreatePaymentUserResponse{}
 	mi := &file_payment_payment_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CreateUserResponse) String() string {
+func (x *CreatePaymentUserResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CreateUserResponse) ProtoMessage() {}
+func (*CreatePaymentUserResponse) ProtoMessage() {}
 
-func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
+func (x *CreatePaymentUserResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_payment_payment_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -97,12 +97,12 @@ func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
-func (*CreateUserResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreatePaymentUserResponse.ProtoReflect.Descriptor instead.
+func (*CreatePaymentUserResponse) Descriptor() ([]byte, []int) {
 	return file_payment_payment_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateUserResponse) GetStatus() string {
+func (x *CreatePaymentUserResponse) GetStatus() string {
 	if x != nil {
 		return x.Status
 	}
@@ -113,14 +113,13 @@ var File_payment_payment_proto protoreflect.FileDescriptor
 
 const file_payment_payment_proto_rawDesc = "" +
 	"\n" +
-	"\x15payment/payment.proto\x12\acreator\",\n" +
-	"\x11CreateUserRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\",\n" +
-	"\x12CreateUserResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status2^\n" +
-	"\x15CreatorPaymentService\x12E\n" +
-	"\n" +
-	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponseB5Z3github.com/Durov-Fans/protos/gen/go/payment;paymentb\x06proto3"
+	"\x15payment/payment.proto\x12\acreator\"3\n" +
+	"\x18CreatePaymentUserRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"3\n" +
+	"\x19CreatePaymentUserResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status2s\n" +
+	"\x15CreatorPaymentService\x12Z\n" +
+	"\x11CreatePaymentUser\x12!.creator.CreatePaymentUserRequest\x1a\".creator.CreatePaymentUserResponseB5Z3github.com/Durov-Fans/protos/gen/go/payment;paymentb\x06proto3"
 
 var (
 	file_payment_payment_proto_rawDescOnce sync.Once
@@ -136,12 +135,12 @@ func file_payment_payment_proto_rawDescGZIP() []byte {
 
 var file_payment_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_payment_payment_proto_goTypes = []any{
-	(*CreateUserRequest)(nil),  // 0: creator.CreateUserRequest
-	(*CreateUserResponse)(nil), // 1: creator.CreateUserResponse
+	(*CreatePaymentUserRequest)(nil),  // 0: creator.CreatePaymentUserRequest
+	(*CreatePaymentUserResponse)(nil), // 1: creator.CreatePaymentUserResponse
 }
 var file_payment_payment_proto_depIdxs = []int32{
-	0, // 0: creator.CreatorPaymentService.CreateUser:input_type -> creator.CreateUserRequest
-	1, // 1: creator.CreatorPaymentService.CreateUser:output_type -> creator.CreateUserResponse
+	0, // 0: creator.CreatorPaymentService.CreatePaymentUser:input_type -> creator.CreatePaymentUserRequest
+	1, // 1: creator.CreatorPaymentService.CreatePaymentUser:output_type -> creator.CreatePaymentUserResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

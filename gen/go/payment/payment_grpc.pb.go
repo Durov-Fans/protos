@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CreatorPaymentService_CreateUser_FullMethodName = "/creator.CreatorPaymentService/CreateUser"
+	CreatorPaymentService_CreatePaymentUser_FullMethodName = "/creator.CreatorPaymentService/CreatePaymentUser"
 )
 
 // CreatorPaymentServiceClient is the client API for CreatorPaymentService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CreatorPaymentServiceClient interface {
-	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
+	CreatePaymentUser(ctx context.Context, in *CreatePaymentUserRequest, opts ...grpc.CallOption) (*CreatePaymentUserResponse, error)
 }
 
 type creatorPaymentServiceClient struct {
@@ -37,10 +37,10 @@ func NewCreatorPaymentServiceClient(cc grpc.ClientConnInterface) CreatorPaymentS
 	return &creatorPaymentServiceClient{cc}
 }
 
-func (c *creatorPaymentServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
+func (c *creatorPaymentServiceClient) CreatePaymentUser(ctx context.Context, in *CreatePaymentUserRequest, opts ...grpc.CallOption) (*CreatePaymentUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateUserResponse)
-	err := c.cc.Invoke(ctx, CreatorPaymentService_CreateUser_FullMethodName, in, out, cOpts...)
+	out := new(CreatePaymentUserResponse)
+	err := c.cc.Invoke(ctx, CreatorPaymentService_CreatePaymentUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *creatorPaymentServiceClient) CreateUser(ctx context.Context, in *Create
 // All implementations must embed UnimplementedCreatorPaymentServiceServer
 // for forward compatibility.
 type CreatorPaymentServiceServer interface {
-	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
+	CreatePaymentUser(context.Context, *CreatePaymentUserRequest) (*CreatePaymentUserResponse, error)
 	mustEmbedUnimplementedCreatorPaymentServiceServer()
 }
 
@@ -62,8 +62,8 @@ type CreatorPaymentServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCreatorPaymentServiceServer struct{}
 
-func (UnimplementedCreatorPaymentServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+func (UnimplementedCreatorPaymentServiceServer) CreatePaymentUser(context.Context, *CreatePaymentUserRequest) (*CreatePaymentUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePaymentUser not implemented")
 }
 func (UnimplementedCreatorPaymentServiceServer) mustEmbedUnimplementedCreatorPaymentServiceServer() {}
 func (UnimplementedCreatorPaymentServiceServer) testEmbeddedByValue()                               {}
@@ -86,20 +86,20 @@ func RegisterCreatorPaymentServiceServer(s grpc.ServiceRegistrar, srv CreatorPay
 	s.RegisterService(&CreatorPaymentService_ServiceDesc, srv)
 }
 
-func _CreatorPaymentService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateUserRequest)
+func _CreatorPaymentService_CreatePaymentUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePaymentUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CreatorPaymentServiceServer).CreateUser(ctx, in)
+		return srv.(CreatorPaymentServiceServer).CreatePaymentUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CreatorPaymentService_CreateUser_FullMethodName,
+		FullMethod: CreatorPaymentService_CreatePaymentUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CreatorPaymentServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
+		return srv.(CreatorPaymentServiceServer).CreatePaymentUser(ctx, req.(*CreatePaymentUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -112,8 +112,8 @@ var CreatorPaymentService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CreatorPaymentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateUser",
-			Handler:    _CreatorPaymentService_CreateUser_Handler,
+			MethodName: "CreatePaymentUser",
+			Handler:    _CreatorPaymentService_CreatePaymentUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
