@@ -4,7 +4,7 @@ package creator;
 
 option go_package = "github.com/Durov-Fans/protos/gen/go/payment;payment";
 
-service CreatorService {
+service CreatorPaymentService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
 }
 

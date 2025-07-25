@@ -117,8 +117,8 @@ const file_payment_payment_proto_rawDesc = "" +
 	"\x11CreateUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\",\n" +
 	"\x12CreateUserResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status2W\n" +
-	"\x0eCreatorService\x12E\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status2^\n" +
+	"\x15CreatorPaymentService\x12E\n" +
 	"\n" +
 	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponseB5Z3github.com/Durov-Fans/protos/gen/go/payment;paymentb\x06proto3"
 
@@ -140,8 +140,8 @@ var file_payment_payment_proto_goTypes = []any{
 	(*CreateUserResponse)(nil), // 1: creator.CreateUserResponse
 }
 var file_payment_payment_proto_depIdxs = []int32{
-	0, // 0: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
-	1, // 1: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
+	0, // 0: creator.CreatorPaymentService.CreateUser:input_type -> creator.CreateUserRequest
+	1, // 1: creator.CreatorPaymentService.CreateUser:output_type -> creator.CreateUserResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

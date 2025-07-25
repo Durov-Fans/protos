@@ -19,101 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CreatorService_CreateUser_FullMethodName = "/creator.CreatorService/CreateUser"
+	CreatorPaymentService_CreateUser_FullMethodName = "/creator.CreatorPaymentService/CreateUser"
 )
 
-// CreatorServiceClient is the client API for CreatorService service.
+// CreatorPaymentServiceClient is the client API for CreatorPaymentService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CreatorServiceClient interface {
+type CreatorPaymentServiceClient interface {
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 }
 
-type creatorServiceClient struct {
+type creatorPaymentServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCreatorServiceClient(cc grpc.ClientConnInterface) CreatorServiceClient {
-	return &creatorServiceClient{cc}
+func NewCreatorPaymentServiceClient(cc grpc.ClientConnInterface) CreatorPaymentServiceClient {
+	return &creatorPaymentServiceClient{cc}
 }
 
-func (c *creatorServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
+func (c *creatorPaymentServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateUserResponse)
-	err := c.cc.Invoke(ctx, CreatorService_CreateUser_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CreatorPaymentService_CreateUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CreatorServiceServer is the server API for CreatorService service.
-// All implementations must embed UnimplementedCreatorServiceServer
+// CreatorPaymentServiceServer is the server API for CreatorPaymentService service.
+// All implementations must embed UnimplementedCreatorPaymentServiceServer
 // for forward compatibility.
-type CreatorServiceServer interface {
+type CreatorPaymentServiceServer interface {
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
-	mustEmbedUnimplementedCreatorServiceServer()
+	mustEmbedUnimplementedCreatorPaymentServiceServer()
 }
 
-// UnimplementedCreatorServiceServer must be embedded to have
+// UnimplementedCreatorPaymentServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedCreatorServiceServer struct{}
+type UnimplementedCreatorPaymentServiceServer struct{}
 
-func (UnimplementedCreatorServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
+func (UnimplementedCreatorPaymentServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
-func (UnimplementedCreatorServiceServer) mustEmbedUnimplementedCreatorServiceServer() {}
-func (UnimplementedCreatorServiceServer) testEmbeddedByValue()                        {}
+func (UnimplementedCreatorPaymentServiceServer) mustEmbedUnimplementedCreatorPaymentServiceServer() {}
+func (UnimplementedCreatorPaymentServiceServer) testEmbeddedByValue()                               {}
 
-// UnsafeCreatorServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CreatorServiceServer will
+// UnsafeCreatorPaymentServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CreatorPaymentServiceServer will
 // result in compilation errors.
-type UnsafeCreatorServiceServer interface {
-	mustEmbedUnimplementedCreatorServiceServer()
+type UnsafeCreatorPaymentServiceServer interface {
+	mustEmbedUnimplementedCreatorPaymentServiceServer()
 }
 
-func RegisterCreatorServiceServer(s grpc.ServiceRegistrar, srv CreatorServiceServer) {
-	// If the following call pancis, it indicates UnimplementedCreatorServiceServer was
+func RegisterCreatorPaymentServiceServer(s grpc.ServiceRegistrar, srv CreatorPaymentServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCreatorPaymentServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&CreatorService_ServiceDesc, srv)
+	s.RegisterService(&CreatorPaymentService_ServiceDesc, srv)
 }
 
-func _CreatorService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CreatorPaymentService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CreatorServiceServer).CreateUser(ctx, in)
+		return srv.(CreatorPaymentServiceServer).CreateUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CreatorService_CreateUser_FullMethodName,
+		FullMethod: CreatorPaymentService_CreateUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CreatorServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
+		return srv.(CreatorPaymentServiceServer).CreateUser(ctx, req.(*CreateUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// CreatorService_ServiceDesc is the grpc.ServiceDesc for CreatorService service.
+// CreatorPaymentService_ServiceDesc is the grpc.ServiceDesc for CreatorPaymentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var CreatorService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "creator.CreatorService",
-	HandlerType: (*CreatorServiceServer)(nil),
+var CreatorPaymentService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "creator.CreatorPaymentService",
+	HandlerType: (*CreatorPaymentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateUser",
-			Handler:    _CreatorService_CreateUser_Handler,
+			Handler:    _CreatorPaymentService_CreateUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
