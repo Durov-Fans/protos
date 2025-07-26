@@ -16,6 +16,7 @@ message CreateUserRequest{
   string username = 2;
   bool tg_user =3;
   int64 telegram_id = 4;
+  string user_url = 5;
 }
 
 message CreateUserResponse{

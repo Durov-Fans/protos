@@ -27,6 +27,7 @@ type CreateUserRequest struct {
 	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
 	TgUser        bool                   `protobuf:"varint,3,opt,name=tg_user,json=tgUser,proto3" json:"tg_user,omitempty"`
 	TelegramId    int64                  `protobuf:"varint,4,opt,name=telegram_id,json=telegramId,proto3" json:"telegram_id,omitempty"`
+	UserUrl       string                 `protobuf:"bytes,5,opt,name=user_url,json=userUrl,proto3" json:"user_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -87,6 +88,13 @@ func (x *CreateUserRequest) GetTelegramId() int64 {
 		return x.TelegramId
 	}
 	return 0
+}
+
+func (x *CreateUserRequest) GetUserUrl() string {
+	if x != nil {
+		return x.UserUrl
+	}
+	return ""
 }
 
 type CreateUserResponse struct {
@@ -461,13 +469,14 @@ var File_creator_creator_proto protoreflect.FileDescriptor
 
 const file_creator_creator_proto_rawDesc = "" +
 	"\n" +
-	"\x15creator/creator.proto\x12\acreator\"\x82\x01\n" +
+	"\x15creator/creator.proto\x12\acreator\"\x9d\x01\n" +
 	"\x11CreateUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x17\n" +
 	"\atg_user\x18\x03 \x01(\bR\x06tgUser\x12\x1f\n" +
 	"\vtelegram_id\x18\x04 \x01(\x03R\n" +
-	"telegramId\",\n" +
+	"telegramId\x12\x19\n" +
+	"\buser_url\x18\x05 \x01(\tR\auserUrl\",\n" +
 	"\x12CreateUserResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"-\n" +
 	"\x13GetTierPriceRequest\x12\x16\n" +
