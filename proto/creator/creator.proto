@@ -9,6 +9,8 @@ service CreatorService {
   rpc GetTierPrice(GetTierPriceRequest) returns (GetTierPriceResponse);
   rpc BuySub(BuySubRequest) returns (BuySubResponse);
   rpc GetTierAndCreatorId(GetTierAndCreatorIdRequest) returns (GetTierAndCreatorIdResponse);
+
+  rpc GetUserInfos(GetUserInfosRequest) returns (GetUserInfosResponse);
 }
 
 message CreateUserRequest{
@@ -51,4 +53,19 @@ message TierAndCreator {
 
 message GetTierAndCreatorIdResponse{
   repeated TierAndCreator data = 1;
+}
+
+message GetUserInfosRequest {
+  repeated int64 user_ids = 1;
+}
+
+message UserInfo {
+  int64 user_id = 1;
+  string username = 2;
+  string avatar_url = 3;
+}
+
+// 🆕 Ответ: массив пользователей
+message GetUserInfosResponse {
+  repeated UserInfo users = 1;
 }

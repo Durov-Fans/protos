@@ -465,6 +465,155 @@ func (x *GetTierAndCreatorIdResponse) GetData() []*TierAndCreator {
 	return nil
 }
 
+type GetUserInfosRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserIds       []int64                `protobuf:"varint,1,rep,packed,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserInfosRequest) Reset() {
+	*x = GetUserInfosRequest{}
+	mi := &file_creator_creator_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserInfosRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserInfosRequest) ProtoMessage() {}
+
+func (x *GetUserInfosRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserInfosRequest.ProtoReflect.Descriptor instead.
+func (*GetUserInfosRequest) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetUserInfosRequest) GetUserIds() []int64 {
+	if x != nil {
+		return x.UserIds
+	}
+	return nil
+}
+
+type UserInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	AvatarUrl     string                 `protobuf:"bytes,3,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserInfo) Reset() {
+	*x = UserInfo{}
+	mi := &file_creator_creator_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserInfo) ProtoMessage() {}
+
+func (x *UserInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserInfo.ProtoReflect.Descriptor instead.
+func (*UserInfo) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UserInfo) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *UserInfo) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+func (x *UserInfo) GetAvatarUrl() string {
+	if x != nil {
+		return x.AvatarUrl
+	}
+	return ""
+}
+
+// 🆕 Ответ: массив пользователей
+type GetUserInfosResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Users         []*UserInfo            `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserInfosResponse) Reset() {
+	*x = GetUserInfosResponse{}
+	mi := &file_creator_creator_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserInfosResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserInfosResponse) ProtoMessage() {}
+
+func (x *GetUserInfosResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_creator_creator_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserInfosResponse.ProtoReflect.Descriptor instead.
+func (*GetUserInfosResponse) Descriptor() ([]byte, []int) {
+	return file_creator_creator_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetUserInfosResponse) GetUsers() []*UserInfo {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
 var File_creator_creator_proto protoreflect.FileDescriptor
 
 const file_creator_creator_proto_rawDesc = "" +
@@ -495,13 +644,23 @@ const file_creator_creator_proto_rawDesc = "" +
 	"creator_id\x18\x01 \x01(\x03R\tcreatorId\x12\x1b\n" +
 	"\ttier_type\x18\x02 \x01(\tR\btierType\"J\n" +
 	"\x1bGetTierAndCreatorIdResponse\x12+\n" +
-	"\x04data\x18\x01 \x03(\v2\x17.creator.TierAndCreatorR\x04data2\xc1\x02\n" +
+	"\x04data\x18\x01 \x03(\v2\x17.creator.TierAndCreatorR\x04data\"0\n" +
+	"\x13GetUserInfosRequest\x12\x19\n" +
+	"\buser_ids\x18\x01 \x03(\x03R\auserIds\"^\n" +
+	"\bUserInfo\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1a\n" +
+	"\busername\x18\x02 \x01(\tR\busername\x12\x1d\n" +
+	"\n" +
+	"avatar_url\x18\x03 \x01(\tR\tavatarUrl\"?\n" +
+	"\x14GetUserInfosResponse\x12'\n" +
+	"\x05users\x18\x01 \x03(\v2\x11.creator.UserInfoR\x05users2\x8e\x03\n" +
 	"\x0eCreatorService\x12E\n" +
 	"\n" +
 	"CreateUser\x12\x1a.creator.CreateUserRequest\x1a\x1b.creator.CreateUserResponse\x12K\n" +
 	"\fGetTierPrice\x12\x1c.creator.GetTierPriceRequest\x1a\x1d.creator.GetTierPriceResponse\x129\n" +
 	"\x06BuySub\x12\x16.creator.BuySubRequest\x1a\x17.creator.BuySubResponse\x12`\n" +
-	"\x13GetTierAndCreatorId\x12#.creator.GetTierAndCreatorIdRequest\x1a$.creator.GetTierAndCreatorIdResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
+	"\x13GetTierAndCreatorId\x12#.creator.GetTierAndCreatorIdRequest\x1a$.creator.GetTierAndCreatorIdResponse\x12K\n" +
+	"\fGetUserInfos\x12\x1c.creator.GetUserInfosRequest\x1a\x1d.creator.GetUserInfosResponseB5Z3github.com/Durov-Fans/protos/gen/go/creator;creatorb\x06proto3"
 
 var (
 	file_creator_creator_proto_rawDescOnce sync.Once
@@ -515,7 +674,7 @@ func file_creator_creator_proto_rawDescGZIP() []byte {
 	return file_creator_creator_proto_rawDescData
 }
 
-var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_creator_creator_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_creator_creator_proto_goTypes = []any{
 	(*CreateUserRequest)(nil),           // 0: creator.CreateUserRequest
 	(*CreateUserResponse)(nil),          // 1: creator.CreateUserResponse
@@ -526,22 +685,28 @@ var file_creator_creator_proto_goTypes = []any{
 	(*GetTierAndCreatorIdRequest)(nil),  // 6: creator.GetTierAndCreatorIdRequest
 	(*TierAndCreator)(nil),              // 7: creator.TierAndCreator
 	(*GetTierAndCreatorIdResponse)(nil), // 8: creator.GetTierAndCreatorIdResponse
+	(*GetUserInfosRequest)(nil),         // 9: creator.GetUserInfosRequest
+	(*UserInfo)(nil),                    // 10: creator.UserInfo
+	(*GetUserInfosResponse)(nil),        // 11: creator.GetUserInfosResponse
 }
 var file_creator_creator_proto_depIdxs = []int32{
-	7, // 0: creator.GetTierAndCreatorIdResponse.data:type_name -> creator.TierAndCreator
-	0, // 1: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
-	2, // 2: creator.CreatorService.GetTierPrice:input_type -> creator.GetTierPriceRequest
-	4, // 3: creator.CreatorService.BuySub:input_type -> creator.BuySubRequest
-	6, // 4: creator.CreatorService.GetTierAndCreatorId:input_type -> creator.GetTierAndCreatorIdRequest
-	1, // 5: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
-	3, // 6: creator.CreatorService.GetTierPrice:output_type -> creator.GetTierPriceResponse
-	5, // 7: creator.CreatorService.BuySub:output_type -> creator.BuySubResponse
-	8, // 8: creator.CreatorService.GetTierAndCreatorId:output_type -> creator.GetTierAndCreatorIdResponse
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	7,  // 0: creator.GetTierAndCreatorIdResponse.data:type_name -> creator.TierAndCreator
+	10, // 1: creator.GetUserInfosResponse.users:type_name -> creator.UserInfo
+	0,  // 2: creator.CreatorService.CreateUser:input_type -> creator.CreateUserRequest
+	2,  // 3: creator.CreatorService.GetTierPrice:input_type -> creator.GetTierPriceRequest
+	4,  // 4: creator.CreatorService.BuySub:input_type -> creator.BuySubRequest
+	6,  // 5: creator.CreatorService.GetTierAndCreatorId:input_type -> creator.GetTierAndCreatorIdRequest
+	9,  // 6: creator.CreatorService.GetUserInfos:input_type -> creator.GetUserInfosRequest
+	1,  // 7: creator.CreatorService.CreateUser:output_type -> creator.CreateUserResponse
+	3,  // 8: creator.CreatorService.GetTierPrice:output_type -> creator.GetTierPriceResponse
+	5,  // 9: creator.CreatorService.BuySub:output_type -> creator.BuySubResponse
+	8,  // 10: creator.CreatorService.GetTierAndCreatorId:output_type -> creator.GetTierAndCreatorIdResponse
+	11, // 11: creator.CreatorService.GetUserInfos:output_type -> creator.GetUserInfosResponse
+	7,  // [7:12] is the sub-list for method output_type
+	2,  // [2:7] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_creator_creator_proto_init() }
@@ -555,7 +720,7 @@ func file_creator_creator_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_creator_creator_proto_rawDesc), len(file_creator_creator_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
